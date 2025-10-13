@@ -54,9 +54,11 @@
 import dayjs from "dayjs";
 import {computed, ref, onMounted, nextTick} from "vue";
 import {onLoad} from "@dcloudio/uni-app";
+import common from "~/api/common";
 
 onLoad(() => {
   init()
+  common.hello()
 })
 
 const pcPath = "/static/wallpaper/pc/"
