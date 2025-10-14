@@ -13,7 +13,13 @@ export default {
 </script>
 
 <style>
+
 /*每个页面公共css */
+@font-face {
+  font-family: 'iconfont';
+  src: url('./static/icon/iconfont.ttf');
+}
+
 @font-face {
   font-family: 'AlibabaPuHuiTi-3-35-Thin';
   src: url('./static/fonts/AlibabaPuHuiTi-3-35-Thin.ttf');

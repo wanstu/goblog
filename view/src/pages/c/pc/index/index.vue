@@ -45,6 +45,20 @@
             <uni-icons type="search" size="30"></uni-icons>
           </view>
         </view>
+        <view class="menu-list">
+          <view v-for="item in menuList" :key="item.title" class="menu-item">
+            <a :href="item.link" target="_blank" :title="item.desc">
+              <view class="menu-cover">
+                <view v-if="item.cover.type === 'icon'" class="iconfont">
+                  <gicon :name="item.cover.value" :size="200" :color="item.cover.color"></gicon>
+                </view>
+              </view>
+              <view class="menu-title" :style="'color:' + item.color">
+                {{item.title}}
+              </view>
+            </a>
+          </view>
+        </view>
       </view>
     </view>
   </view>
@@ -52,30 +66,35 @@
 
 <script setup>
 import dayjs from "dayjs";
-import {computed, ref, onMounted, nextTick} from "vue";
+import {computed, ref, reactive, onMounted, nextTick} from "vue";
 import {onLoad} from "@dcloudio/uni-app";
-import common from "~/api/common";
+import common from "@/api/common.js";
+import gicon from "@/components/gicon.vue";
 
 onLoad(() => {
   init()
   common.hello()
 })
 
+const menuList = reactive([
+  {
+    title: "blog",
+    color: "rgb(45, 51, 47)",
+    cover: {
+      type: 'icon',
+      color: "rgb(66, 72, 69)",
+      value: "\ue656"
+    },
+    link: "https://blog.wanstu.cn",
+    desc: "个人博客，记录学习、工作、生活中的点滴"
+  }
+]);
 const pcPath = "/static/wallpaper/pc/"
 const weekDayStyleType = 1 // 1: 星期 2: 周 3: 英文
 const wallpaperList = [
   {
     url: 'url(' + pcPath + '3c864d5f80be61addac66938d5e2a6244ab48304.jpg)'
-  },
-  // {
-  //   url: 'url(' + pcPath + '367a093d90fd3ad56142ca9b5a9f562c30630294.jpg)'
-  // },
-  // {
-  //   url: 'url(' + pcPath + '9558a3afa507a3d7a4a224c56696662d8c4855f3.jpg)'
-  // },
-  // {
-  //   url: 'url(' + pcPath + 'eb618b48c4667105855341ce0b1fc44ee68445c6.jpg)'
-  // },
+  }
 ]
 const engineList = [
   {
@@ -314,6 +333,49 @@ const weekDayStr = computed(() => {
       }
       .search-btn {
         cursor: pointer;
+      }
+    }
+
+    .menu-list {
+      width: 50%;
+      height: 100%;
+      display: flex;
+      margin: 0 auto;
+      padding: 100rpx 200rpx;
+      .menu-item:hover {
+        transform: scale(1.03);
+      }
+      .menu-item:hover .menu-cover{
+        //border: 5rpx solid rgba(57, 197, 187, 0.5);
+        //box-shadow: 0 2px 2px 0 rgba(57, 197, 187, 0.3);
+        box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.06), 0 1px 5px 0 rgba(0,0,0,0.12), 0 -1px 0.5px 0 rgba(0,0,0,0.09);
+      }
+      a {
+        text-decoration: none;
+        &:visited {
+          color: inherit; /* 访问后颜色 */
+        }
+        &:hover {
+          color: inherit; /* 悬停时颜色 */
+        }
+        &:active {
+          color: inherit; /* 点击时颜色 */
+        }
+      }
+      .menu-item {
+        cursor: pointer;
+        width: 200rpx;
+        height: 240rpx;
+        .menu-cover {
+          width: 200rpx;
+          height: 200rpx;
+          background: rgba(255, 255, 255, 0.2);
+        }
+        .menu-title {
+          text-align: center;
+          color: #fff;
+        }
+
       }
     }
   }
