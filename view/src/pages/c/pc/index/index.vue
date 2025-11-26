@@ -83,10 +83,21 @@ const menuList = reactive([
     cover: {
       type: 'icon',
       color: "rgb(66, 72, 69)",
-      value: "\ue656"
+      value: "blog"
     },
     link: "https://blog.wanstu.cn",
     desc: "个人博客，记录学习、工作、生活中的点滴"
+  },
+  {
+    title: "哔哩哔哩",
+    color: "rgb(45, 51, 47)",
+    cover: {
+    type: 'icon',
+      color: "rgb(66, 72, 69)",
+      value: "bilibili-line"
+    },
+    link: "https://www.bilibili.com",
+    desc: "哔哩哔哩 (゜-゜)つロ 干杯~-bilibili"
   }
 ]);
 const pcPath = "/static/wallpaper/pc/"
@@ -342,6 +353,7 @@ const weekDayStr = computed(() => {
       display: flex;
       margin: 0 auto;
       padding: 100rpx 200rpx;
+      gap: 10rpx;
       .menu-item:hover {
         transform: scale(1.03);
       }
@@ -367,6 +379,8 @@ const weekDayStr = computed(() => {
         width: 200rpx;
         height: 240rpx;
         .menu-cover {
+          overflow: hidden;
+          border-radius: 10rpx;
           width: 200rpx;
           height: 200rpx;
           background: rgba(255, 255, 255, 0.2);
