@@ -145,13 +145,27 @@ onMounted(() => {
 })
 
 document.addEventListener('keydown', function(event) {
-  // 检查是否是 Tab 键
-  if (event.key === 'Tab') {
+  const focusKeys = [
+    'ArrowUp',
+    'ArrowDown',
+    'ArrowLeft',
+    'ArrowRight',
+    ' ',
+  ]
+  console.log(event.key, focusKeys.includes(event.key))
+  // 正则匹配 A-Za-z0-9
+  const reg = /[A-Za-z0-9]/;
+  if((event.key.length === 1 && reg.exec(event.key))
+  || focusKeys.includes(event.key)) {
+    inputSetFocus(true)
+  }else if (event.key === 'Tab') {
     event.preventDefault()
     if(inputFocus.value) {
       nextEngine()
     }
     inputSetFocus(true)
+  }else if (event.key === 'Enter') {
+    searchQuery()
   }
 });
 
@@ -268,6 +282,7 @@ const weekDayStr = computed(() => {
 
 <style lang="scss" scoped>
 .container {
+  overflow: hidden;
   background: v-bind(wallpaperUrl) no-repeat center center / cover;
   width: 100%;
   height: 100vh;
