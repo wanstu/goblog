@@ -98,6 +98,39 @@ const menuList = reactive([
     },
     link: "https://www.bilibili.com",
     desc: "哔哩哔哩 (゜-゜)つロ 干杯~-bilibili"
+  },
+  {
+    title: "抖音",
+    color: "rgb(45, 51, 47)",
+    cover: {
+    type: 'icon',
+      color: "rgb(66, 72, 69)",
+      value: "douyin1"
+    },
+    link: "https://www.douyin.com/",
+    desc: "记录美好生活"
+  },
+  {
+    title: "email",
+    color: "rgb(45, 51, 47)",
+    cover: {
+    type: 'icon',
+      color: "rgb(66, 72, 69)",
+      value: "youxiang"
+    },
+    link: "https://mail.163.com/",
+    desc: "email"
+  },
+  {
+    title: "tapd",
+    color: "rgb(45, 51, 47)",
+    cover: {
+    type: 'icon',
+      color: "rgb(66, 72, 69)",
+      value: "TAPD"
+    },
+    link: "https://www.tapd.cn/my_dashboard",
+    desc: "tapd"
   }
 ]);
 const pcPath = "/static/wallpaper/pc/"
@@ -303,7 +336,6 @@ const weekDayStr = computed(() => {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    background: rgba(0, 0, 0, 0.09);
     //backdrop-filter: blur(2px);
     border-radius: 5rpx;
 
