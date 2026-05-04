@@ -1,0 +1,7 @@
+# SQLite database files
+goblog.db
+*.db-shm
+*.db-wal
+
+# Uploads directory (runtime generated)
+uploads/
